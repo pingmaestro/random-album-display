@@ -29,16 +29,17 @@ h1 {
 
 .album-info h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 32px;
     color: #007bff;
 }
 
 .album-info p {
-    margin: 5px 0;
+    margin: 20px 0;
 }
 
+
 .album-links {
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 .album-links a {
@@ -55,15 +56,17 @@ h1 {
     background-color: #0056b3;
 }
 
+
 .album-cover {
-    max-width: 200px;
+    max-width: 500px;
     height: auto;
     border-radius: 5px;
 }
 
 .rank {
-    margin-top: 20px;
+    font-size: 1.5em;
     font-weight: bold;
+    text-align: center;
     color: #555;
 }
 
@@ -84,10 +87,17 @@ h1 {
     background-color: #0056b3;
 }
 
-.graph-container {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+    .album-links {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
 }
+
+.album-links a {
+    margin-bottom: 10px;
+    width: 70%; /* Make the links take full width */
+    text-align: center;
+    padding: 0.2rem 0.1rem; /* More flexible than fixed pixel values */
+    margin: 0.2rem; /* Responsive margin */
+    }
+};

@@ -7033,15 +7033,11 @@ function displayAlbum(album) {
     document.getElementById('record-label').innerText = album.record_label;
     document.getElementById('release-year').innerText = album.release_year;
     document.getElementById('spotify-link').href = `https://open.spotify.com/album/${album.album_id}`;
-    document.getElementById('youtube-link').href = `https://music.youtube.com/results?search_query=${album.album_title}`;
-    document.getElementById('apple-link').href = `https://music.apple.com/search?term=${album.album_title}`;
+    document.getElementById('youtube-link').href = `https://music.youtube.com/search?q=${album.album_title} ${album.artist_name}`;
+    document.getElementById('apple-music-link').href = `https://music.apple.com/search?term=${encodeURIComponent(album.album_title)}+${encodeURIComponent(album.artist_name)}`;
     document.getElementById('rank').innerText = `Rank: ${album['2023_rank']}`;
     document.getElementById('album-cover').src = `https://dummyimage.com/200x200/000/fff&text=${album.album_title}`;
 
-    // Add click event for rank to show graph
-    document.getElementById('rank').onclick = function() {
-        showRankGraph(album);
-    };
 }
 
 // Initial display
