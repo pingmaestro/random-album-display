@@ -7035,8 +7035,7 @@ function displayAlbum(album) {
     document.getElementById('spotify-link').href = `https://open.spotify.com/album/${album.album_id}`;
     document.getElementById('youtube-link').href = `https://music.youtube.com/search?q=${album.album_title} ${album.artist_name}`;
     document.getElementById('apple-music-link').href = `https://music.apple.com/search?term=${encodeURIComponent(album.album_title)}+${encodeURIComponent(album.artist_name)}`;
-    document.getElementById('rank').innerText = `Rank: ${album['2023_rank']}`;
-    document.getElementById('album-cover').src = `https://dummyimage.com/200x200/000/fff&text=${album.album_title}`;
+    document.getElementById('rank').innerText = `Ranked by Rolling Stone (2023 Edition): ${album['2023_rank']}`;
 
 }
 
@@ -7047,3 +7046,13 @@ displayAlbum(getRandomAlbum());
 document.getElementById('random-album-button').onclick = function() {
     displayAlbum(getRandomAlbum());
 };
+
+// Toggle About Panel
+function toggleInfo() {
+    const info = document.querySelector('.info');
+    if (info.style.display === 'none' || info.style.display === '') {
+        info.style.display = 'block'; // Show the info
+    } else {
+        info.style.display = 'none'; // Hide the info
+    }
+}

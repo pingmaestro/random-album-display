@@ -3,29 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Random Album Display</title>
+        <title>Random Album Generator</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="https://play-lh.googleusercontent.com/dNc1jU0iyPxk5_XL2j6b88PxkUNPxgMX93T_7uMBzMdntX9uLkoOfGx8xiq1HfE4uuM" type="image/x-icon">
     </head>    
 <body>
-    <h1>Album of the Day</h1>
+    <h1>500 Greatest Albums of All Time</h1>
+    <p>Discover a top album from Rolling Stone's 2023 list and enjoy timeless music with every play.</p>
     <div class="container">
         <div class="album-info">
-            <h2 id="album-title">Album Title</h2>
-            <p id="artist-name">Artist Name</p>
-            <p><span id="record-label">Record Label</span> | <span id="release-year">Release Year</span></p>
-            <div class="album-links">
-                <a id="spotify-link" target="_blank"> Spotify </a>
-                <a id="youtube-link" target="_blank"> Youtube Music </a>
-                <a id="apple-music-link" target="_blank"> Apple Music </a>
-            </div>
-
-        </div>
-        <div class="album-cover">
-            <img id="album-cover" class="album-cover" src="" alt="Album Cover">
-            <p class="rank" id="rank"></p>
+            <h2><span id="album-title">Album Title</span>, <span id="artist-name">Artist Name</span></h2>
+            <p><span id="record-label" class="record-label">Record Label</span>, <span id="release-year">Release Year</span></p>
+            <p><span id="rank" class="rank"</span></p>
+        </div>        
+        <div class="album-links">
+            <a id="spotify-link" class="spotify-link" target="_blank"></a>
+            <a id="youtube-link" class="youtube-link" target="_blank"></a>
+            <a id="apple-music-link" class="apple-music-link" target="_blank"></a>
         </div>
     </div>
-    <button id="random-album-button" class="random-album-button">Show Random Album</button>
+    <button id="random-album-button" class="random-album-button">Pick Another Album!</button>
     <script src="script.js"></script>
+    <div class="container-bottom">
+        <h3 class="toggle" onclick="toggleInfo()">About this website?</h3>
+        <div class="info">
+            <p> Hello! Thanks for being here :) </p> 
+            <p> This is my first leap into the world of data analysis, and it’s been a fascinating ride so far! Coming from a business analyst background, my coding skills are still in their infancy. What may seem like a simple album generator is actually the result of a deep dive into data from Rolling Stone's iconic "Greatest Albums of All Time" list. </p>
+            <p> Over the last 20 years, this list has seen 5 revisions (some minor and one major), shaking up the rankings of classic albums in surprising ways. My mission? To collect and clean all the official rankings into a single "mega list" and explore how some legendary albums have risen or fallen over time.</p>
+            <p> Along the way, I enhanced my MySQL skills and experimented with Python for the first time, extracting data straight from the source. This website is just the beginning of a series of small projects, each building on the knowledge I've gained.</p>
+            <p> I hope you'll enjoy this website, which contains the latest update from last year.</p>
+            <p> Here’s to music, to Rolling Stone’s ever-evolving list, and to the exciting updates still to come!</p>
+        </div>
+    </div>
 </body>
 </html>
