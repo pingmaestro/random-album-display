@@ -28,19 +28,6 @@ align-items: center;
 justify-content: center;
 }
 
-/*
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: linear-gradient(135deg, rgba(248, 248, 248, 1) 0%, rgba(240, 240, 240, 1) 100%);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(5px);
-}
-*/
-
 .album-info {
     flex: 1;
     margin-right: 20px;
@@ -111,30 +98,10 @@ justify-content: center;
 } 
 
 .album-links .apple-music-link:hover  {
-    background-image: url('https://static.wikia.nocookie.net/logopedia/images/3/34/Apple_Music_for_Artists_2019.png');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png');
     transform: scale(1.05); 
 } 
-/*
-.random-album-button {
-    background: linear-gradient(135deg, #4D2CBD, #21A5CE, #12CDC6);
-    color: white;
-    font-size: 1.2em;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .random-album-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-  }
-*/
+
   .random-album-button {
     display: block;
     margin: 20px auto;
@@ -152,27 +119,6 @@ justify-content: center;
     background-color: #ad08ff;
 }
 
-
-
-
-/*
-.random-album-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color:#1DB954;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.random-album-button:hover {
-    background-color: #1ED760;
-}
-*/
 /* About*/
 
 .container-bottom {
