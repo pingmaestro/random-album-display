@@ -111,7 +111,7 @@ justify-content: center;
 } 
 
 .album-links .apple-music-link:hover  {
-    background-image: url('https://static.wikia.nocookie.net/logopedia/images/3/34/Apple_Music_for_Artists_2019.png/revision/latest?cb=20201004082803');
+    background-image: url('https://static.wikia.nocookie.net/logopedia/images/3/34/Apple_Music_for_Artists_2019.png');
     transform: scale(1.05); 
 } 
 /*
