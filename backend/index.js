@@ -2,20 +2,26 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 
-// Load environment variables from the .env file (local development)
-require('dotenv').config({ path: './credentials.env' }); // This line ensures we load the .env file from the correct location
+// Load environment variables for local development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({ path: './credentials.env' }); // Ensure we load the credentials.env for local development
+}
 
 const app = express();
-app.use(cors()); // Enable CORS for all origins
+
+// Enable CORS for a specific origin (replace with your frontend domain)
+app.use(cors({
+    origin: 'https://pingmaestro.github.io' // Replace with your frontend domain (for production)
+}));
 
 // Load Spotify credentials from environment variables
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
-// Ensure credentials exist
+// Ensure credentials are set
 if (!CLIENT_ID || !CLIENT_SECRET) {
-    console.error('SPOTIFY_CLIENT_ID or SPOTIFY_CLIENT_SECRET is missing in credentials.env');
-    process.exit(1);  
+    console.error('SPOTIFY_CLIENT_ID or SPOTIFY_CLIENT_SECRET is missing in environment variables');
+    process.exit(1);
 }
 
 // Define the /spotify-token endpoint
@@ -23,7 +29,7 @@ app.get('/spotify-token', async (req, res) => {
     try {
         const tokenResponse = await axios.post(
             'https://accounts.spotify.com/api/token',
-            new URLSearchParams({ grant_type: 'client_credentials' }),
+            new URLSearchParams({ grant_type: 'client_credentials' }), // Request body
             {
                 headers: {
                     Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
@@ -32,7 +38,7 @@ app.get('/spotify-token', async (req, res) => {
             }
         );
 
-        // Return the token to the client
+        // Return the access token
         res.json(tokenResponse.data);
     } catch (error) {
         console.error('Error fetching Spotify token:', error.response?.data || error.message);
@@ -40,8 +46,9 @@ app.get('/spotify-token', async (req, res) => {
     }
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+// Start the server (Vercel will automatically assign the correct port)
+const PORT = process.env.PORT || 3000; // Ensure you can run locally and on Vercel
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
