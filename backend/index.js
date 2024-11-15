@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-require('dotenv').config(); // Load environment variables from credentials.env
-require('dotenv').config({ path: './credentials.env' });
 
+// Load environment variables from the .env file (local development)
+require('dotenv').config({ path: './credentials.env' }); // This line ensures we load the .env file from the correct location
 
 const app = express();
 app.use(cors()); // Enable CORS for all origins
@@ -45,4 +45,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
-
