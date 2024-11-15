@@ -1,0 +1,18 @@
+# Node.js modules
+node_modules/
+
+# Environment variables
+credentials.env
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Package lock file
+package-lock.json
+
+getSpotifyToken.mjs
+server.mjs
