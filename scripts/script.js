@@ -7143,7 +7143,11 @@ setTopTag(rank2023);
 // Function to fetch Spotify access token
 async function fetchAccessToken() {
     try {
-        const response = await fetch('http://localhost:3000/spotify-token');
+        const apiUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://random-album-backend-e90t3wl0e-pingmaestros-projects.vercel.app/api/spotify-token' 
+            : 'http://localhost:3000/spotify-token';
+
+        const response = await fetch(apiUrl);
         const data = await response.json();
         return data.accessToken;
     } catch (error) {
