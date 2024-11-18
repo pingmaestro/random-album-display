@@ -7140,44 +7140,46 @@ setTopTag(rank2023);
     }
 }
 
-// Function to fetch Spotify access token
+// Fetch the access token from your backend (Vercel API endpoint)
 async function fetchAccessToken() {
     try {
         const apiUrl = process.env.NODE_ENV === 'production' 
             ? 'https://random-album-backend.vercel.app/api/spotify-token' 
-            : 'http://localhost:3000/spotify-token';
+            : 'http://localhost:3000/api/spotify-token';
 
         const response = await fetch(apiUrl);
         const data = await response.json();
-        return data.accessToken;
+        return data.access_token; // Use the correct field name here (access_token)
     } catch (error) {
         console.error('Error fetching access token:', error);
     }
 }
 
+
 // Function to search and fetch artist data from Spotify by name
 async function fetchArtistData(artistName, accessToken) {
     try {
-        // Existing fetch logic
+        // Fetch artist search data from Spotify API
         const searchResponse = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist&limit=1`, {
             headers: { 'Authorization': `Bearer ${accessToken}` }
         });
         const searchData = await searchResponse.json();
-        const artistId = searchData.artists.items[0]?.id;
 
-        if (!artistId) {
+        // Ensure that 'artists' and 'items' exist and the 'items' array is not empty
+        if (searchData.artists && searchData.artists.items.length > 0) {
+            const artistId = searchData.artists.items[0].id;
+
+            // Fetch detailed artist data using the artistId
+            const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+                headers: { 'Authorization': `Bearer ${accessToken}` }
+            });
+            const artistData = await artistResponse.json();
+
+            return artistData; // Return the artist data
+        } else {
             console.warn(`Artist not found: ${artistName}`);
             return null;
         }
-
-        const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
-            headers: { 'Authorization': `Bearer ${accessToken}` }
-        });
-        const artistData = await artistResponse.json();
-
-        console.log("Artist Data:", artistData); // Check genres in this log
-
-        return { ...artistData, relatedArtists: artistData.relatedArtists }; // Adjusted if needed
     } catch (error) {
         console.error('Error fetching artist data:', error);
         return null;
@@ -7294,7 +7296,7 @@ async function displayGenreCloud(artistData, accessToken) {
                 genreTag.textContent = genre;
 
                 const albumImg = document.createElement('img');
-                albumImg.src = popularTrack.album.images[0]?.url || 'path/to/default-album-image.jpg';
+                albumImg.src = popularTrack.album.images[0]?.url || 'https://iili.io/HlHy9Yx.png';
                 albumImg.alt = `${popularTrack.album.name} album cover`;
                 albumImg.className = 'related-album-image';
                 albumImg.onclick = () => window.open(popularTrack.album.external_urls.spotify, '_blank');
