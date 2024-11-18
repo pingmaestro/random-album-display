@@ -10,8 +10,8 @@
       "use": "@vercel/static"
     },
     {
-      "src": "styles/styles.css",
-      "use": "@vercel/static"
+      "src": "styles/styles.css", 
+      "use": "@vercel/static"   
     },
     {
       "src": "index.html",
@@ -21,7 +21,7 @@
   "routes": [
     {
       "src": "/api/spotify-token",
-      "dest": "backend/index.js"
+      "dest": "api/spotify-token.js"
     }
   ]
 }
