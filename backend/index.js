@@ -2,16 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 
-// Load environment variables for local development
+// Load environment variables for local development only
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: './credentials.env' }); // Ensure we load the credentials.env for local development
+    require('dotenv').config({ path: './credentials.env' }); // Ensure loading from local .env file
 }
 
 const app = express();
 
 // Enable CORS for a specific origin (replace with your frontend domain)
 app.use(cors({
-    origin: 'https://pingmaestro.github.io' // Replace with your frontend domain (for production)
+    origin: 'https://pingmaestro.github.io' // Replace with your frontend domain
 }));
 
 // Load Spotify credentials from environment variables
@@ -25,7 +25,7 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
 }
 
 // Define the /spotify-token endpoint
-app.get('/spotify-token', async (req, res) => {
+app.get('/api/spotify-token', async (req, res) => {
     try {
         const tokenResponse = await axios.post(
             'https://accounts.spotify.com/api/token',
@@ -37,7 +37,6 @@ app.get('/spotify-token', async (req, res) => {
                 },
             }
         );
-
         // Return the access token
         res.json(tokenResponse.data);
     } catch (error) {
