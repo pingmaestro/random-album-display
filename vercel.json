@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/index.js",
+      "src": "api/spotify-token.js",
       "use": "@vercel/node"
     },
     {
@@ -11,7 +11,7 @@
     },
     {
       "src": "styles/styles.css", 
-      "use": "@vercel/static"   
+      "use": "@vercel/static"
     },
     {
       "src": "index.html",
