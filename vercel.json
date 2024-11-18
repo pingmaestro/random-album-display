@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "scripts/script.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "styles/styles.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/spotify-token",
+      "dest": "backend/index.js"
+    }
+  ]
+}
+
