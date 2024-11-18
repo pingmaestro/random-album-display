@@ -7145,7 +7145,7 @@ async function fetchAccessToken() {
     try {
         // Use the correct URL depending on environment (production or local)
         const apiUrl = window.location.hostname === 'random-album-backend.vercel.app'
-            ? 'https://random-album-backend.vercel.app/api/spotify-token'
+            ? 'https://random-album-backend-a7m6xth59-pingmaestros-projects.vercel.app/api/spotify-token'
             : 'http://localhost:3000/api/spotify-token';
 
         const response = await fetch(apiUrl);
