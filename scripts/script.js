@@ -7144,7 +7144,7 @@ setTopTag(rank2023);
 async function fetchAccessToken() {
     try {
         const apiUrl = process.env.NODE_ENV === 'production' 
-            ? 'https://random-album-backend-e90t3wl0e-pingmaestros-projects.vercel.app/api/spotify-token' 
+            ? 'https://random-album-backend.vercel.app/api/spotify-token' 
             : 'http://localhost:3000/spotify-token';
 
         const response = await fetch(apiUrl);
