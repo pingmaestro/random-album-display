@@ -7143,19 +7143,12 @@ setTopTag(rank2023);
 // Fetch the access token from your backend (Vercel API endpoint)
 async function fetchAccessToken() {
     try {
-        // Use the correct URL depending on environment (production or local)
-        const apiUrl = window.location.hostname === 'random-album-backend.vercel.app'
-            ? 'https://random-album-backend-a7m6xth59-pingmaestros-projects.vercel.app/api/spotify-token'
-            : 'http://localhost:3000/api/spotify-token';
+        // Use relative URL
+        const apiUrl = '/api/spotify-token'; // This works in both local and production environments
 
         const response = await fetch(apiUrl);
         const data = await response.json();
-        
-        if (data.access_token) {
-            return data.access_token; // Return the access token
-        } else {
-            throw new Error('Access token not found in the response');
-        }
+        return data.access_token; // Use the correct field for the token
     } catch (error) {
         console.error('Error fetching access token:', error);
     }
