@@ -7143,17 +7143,15 @@ setTopTag(rank2023);
 // Fetch the access token from your backend (Vercel API endpoint)
 async function fetchAccessToken() {
     try {
-        // Use relative URL
-        const apiUrl = '/api/spotify-token'; // This works in both local and production environments
-
+        const apiUrl = '/api/spotify-token';
         const response = await fetch(apiUrl);
         const data = await response.json();
-        return data.access_token; // Use the correct field for the token
+        return data.access_token;
     } catch (error) {
         console.error('Error fetching access token:', error);
+        return null;
     }
 }
-
 
 // Function to search and fetch artist data from Spotify by name
 async function fetchArtistData(artistName, accessToken) {
