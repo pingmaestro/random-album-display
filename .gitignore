@@ -3,6 +3,7 @@ node_modules/
 
 # Environment variables
 credentials.env
+.env
 
 # Logs
 *.log
@@ -11,9 +12,9 @@ credentials.env
 .DS_Store
 Thumbs.db
 
-# Package lock file
-package-lock.json
+# Vercel configuration
+.vercel
 
+# Unnecessary files
 getSpotifyToken.mjs
 server.mjs
-.vercel

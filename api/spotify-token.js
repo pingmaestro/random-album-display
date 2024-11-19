@@ -1,7 +1,7 @@
-const axios = require('axios');
+// api/spotify-token.js
+import axios from 'axios';
 
-// Serverless function to handle the /spotify-token request
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
     const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
@@ -29,4 +29,4 @@ module.exports = async (req, res) => {
         console.error('Error fetching Spotify token:', error.response?.data || error.message);
         res.status(500).json({ error: 'Failed to fetch Spotify token' });
     }
-};
+}
